@@ -11,7 +11,50 @@
     <title>La P'tite Frite - Friterie a Gorcy</title>
   </head>
   <body>
-    <div id="root"></div>
+    <style>
+      .file-open-fallback {
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+        gap: 1rem;
+        padding: 2rem;
+        background: #191612;
+        color: #fff7dc;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .file-open-fallback h1 {
+        margin: 0;
+        color: #f5c542;
+        font-size: clamp(2rem, 8vw, 4rem);
+        line-height: 0.95;
+        text-transform: uppercase;
+      }
+
+      .file-open-fallback p {
+        max-width: 38rem;
+        margin: 0 auto;
+        line-height: 1.55;
+      }
+
+      .file-open-fallback code {
+        border-radius: 0.35rem;
+        background: #2a241c;
+        color: #f5c542;
+        padding: 0.15rem 0.35rem;
+      }
+    </style>
+    <div id="root">
+      <div class="file-open-fallback">
+        <h1>La P'tite Frite</h1>
+        <p>
+          Le site React doit etre lance avec le serveur local Vite, pas en ouvrant
+          directement ce fichier.
+        </p>
+        <p>Dans PowerShell : <code>npm run dev</code>, puis ouvrir <code>http://127.0.0.1:5174</code>.</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
