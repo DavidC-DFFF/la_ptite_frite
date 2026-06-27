@@ -473,7 +473,7 @@ h3 {
   .menu-panel,
   .menu-panel-reverse {
     --panel-collapsed-height: min(19dvh, 180px);
-    --panel-stage-gap: 6px;
+    --panel-stage-gap: 10px;
     display: block;
     min-height: calc(
       var(--panel-collapsed-height) + var(--panel-content-height, 280px) +
@@ -667,7 +667,7 @@ h3 {
     .menu-panel,
     .menu-panel-reverse {
       --panel-collapsed-height: min(16dvh, 150px);
-      --panel-stage-gap: 6px;
+      --panel-stage-gap: 10px;
       min-height: calc(
         var(--panel-collapsed-height) + var(--panel-content-height, 240px) +
           var(--panel-stage-gap) + var(--panel-stage-gap)
