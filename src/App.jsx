@@ -125,7 +125,30 @@ function App() {
   useEffect(() => {
     document.documentElement.classList.add("motion-ready");
     const nodes = document.querySelectorAll(".reveal");
-    const panels = document.querySelectorAll(".menu-panel");
+    const panels = Array.from(document.querySelectorAll(".menu-panel"));
+    let panelStackFrame = 0;
+
+    const updatePanelStack = () => {
+      panelStackFrame = 0;
+      const stickyTop = window.matchMedia("(max-width: 820px)").matches ? 78 : 86;
+
+      panels.forEach((panel, index) => {
+        const nextPanel = panels[index + 1];
+        const nextStage = nextPanel?.querySelector(".menu-panel-stage");
+        const shouldExit = nextStage
+          ? nextStage.getBoundingClientRect().top <= stickyTop + 8
+          : false;
+
+        panel.classList.toggle("is-past", shouldExit);
+      });
+    };
+
+    const requestPanelStackUpdate = () => {
+      if (!panelStackFrame) {
+        panelStackFrame = window.requestAnimationFrame(updatePanelStack);
+      }
+    };
+
     const syncPanelHeights = () => {
       panels.forEach((panel) => {
         const content = panel.querySelector(".menu-panel-content");
@@ -135,8 +158,15 @@ function App() {
       });
     };
 
+    const handleResize = () => {
+      syncPanelHeights();
+      requestPanelStackUpdate();
+    };
+
     syncPanelHeights();
-    window.addEventListener("resize", syncPanelHeights);
+    updatePanelStack();
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", requestPanelStackUpdate, { passive: true });
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -152,8 +182,12 @@ function App() {
 
     nodes.forEach((node) => observer.observe(node));
     return () => {
+      if (panelStackFrame) {
+        window.cancelAnimationFrame(panelStackFrame);
+      }
       observer.disconnect();
-      window.removeEventListener("resize", syncPanelHeights);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", requestPanelStackUpdate);
       document.documentElement.classList.remove("motion-ready");
     };
   }, []);

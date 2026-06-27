@@ -502,6 +502,15 @@ h3 {
     animation: stage-pack both var(--ease);
     animation-timeline: --menu-panel;
     animation-range: entry 12% cover 45%;
+    transition:
+      opacity 220ms var(--ease),
+      transform 260ms var(--ease);
+  }
+
+  .menu-panel.is-past .menu-panel-stage {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(calc(-100% - var(--panel-stage-gap)));
   }
 
   .menu-panel-stage::after {
