@@ -12,7 +12,6 @@ const categories = [
   {
     id: "burgers-maison",
     title: "Burgers maison",
-    intro: "Les plus généreux, steak frais et recettes garnies.",
     image: burgersMaison,
     alt: "Deux très gros burgers maison avec fromage fondu sur fond noir",
     featured: true,
@@ -30,7 +29,6 @@ const categories = [
   {
     id: "burgers",
     title: "Burgers",
-    intro: "Les petits classiques de friterie, rapides et efficaces.",
     image: burgersClassiques,
     alt: "Trois petits burgers classiques avec quelques frites",
     items: [
@@ -45,7 +43,6 @@ const categories = [
   {
     id: "frites",
     title: "Frites",
-    intro: "Le coeur de la maison, doré, croustillant, sans détour.",
     image: frites,
     alt: "Cornet de frites dorées sur fond noir et jaune",
     items: [
@@ -56,7 +53,6 @@ const categories = [
   {
     id: "viandes",
     title: "Viandes et snacks",
-    intro: "Fricadelles, croquettes, brochettes et bouchées croustillantes.",
     image: viandesSnacks,
     alt: "Assortiment de viandes et snacks frits avec sauces",
     items: [
@@ -88,7 +84,6 @@ const categories = [
   {
     id: "assiettes",
     title: "Assiettes",
-    intro: "Des assiettes complètes avec frites et salade.",
     image: assiettes,
     alt: "Assiette complète avec vol-au-vent, frites et salade",
     items: [
@@ -103,7 +98,6 @@ const categories = [
   {
     id: "magic-box",
     title: "Magic Box enfant",
-    intro: "Un menu enfant simple : viande, petite frite, boisson et jouet.",
     image: magicBox,
     alt: "Menu enfant avec mini burger, nuggets, frites, boisson et petit jouet",
     items: [["Magic Box enfant", "5.00€"]],
@@ -111,7 +105,6 @@ const categories = [
   {
     id: "boissons",
     title: "Boissons et sauces",
-    intro: "Softs, bières, vins et sauces pour compléter la commande.",
     image: boissonsSauces,
     alt: "Boissons sans marque et coupelles de sauces sur fond noir et jaune",
     items: [
@@ -189,10 +182,12 @@ function App() {
           <div className="hero-copy reveal is-visible">
             <p className="kicker">31 Place Jules Andres, 54730 Gorcy</p>
             <h1>Frites, burgers, Gorcy.</h1>
-            <p className="hero-lead">
-              La P'tite Frite sert la friterie franche, noire et jaune : petits burgers,
-              burgers maison XL, frites, assiettes, snacks et box enfant.
-            </p>
+            <div className="hero-hours" aria-label="Horaires">
+              <strong>Horaires</strong>
+              <span>Mardi-samedi : 11h30-14h / 18h-21h30</span>
+              <span>Dimanche : 18h-21h30</span>
+              <span>Lundi : ferme</span>
+            </div>
             <div className="hero-actions" aria-label="Actions principales">
               <a className="button button-primary" href="tel:+33673279183">
                 Appeler maintenant
@@ -233,7 +228,6 @@ function App() {
                   </div>
                   <div className="menu-panel-heading">
                     <h3>{category.title}</h3>
-                    <p>{category.intro}</p>
                   </div>
                 </div>
                 <div className="menu-panel-content">
